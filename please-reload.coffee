@@ -154,7 +154,11 @@ handleRequest = (root)-> (req, res)->
       return respond res, 404 if error?.code is "ENOENT"
       return respond res, 500, error.code if error?
       if ext is "html"
-        content = content.toString().replace "</body>", "  #{reloadScript(req.headers.host)}\n</body>"
+        content = content.toString()
+        if -1 < content.indexOf "</body>"
+          content = content.replace "</body>", "  #{reloadScript req.headers.host}\n</body>"
+        else
+          content += reloadScript req.headers.host
       respond res, 200, content, headers
 
 

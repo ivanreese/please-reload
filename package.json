@@ -1,6 +1,6 @@
 {
   "name": "please-reload",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An unlucky little file server that's trying its best.",
   "author": "Ivan Reese (https://ivanish.ca)",
   "main": "please-reload.coffee",
