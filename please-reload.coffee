@@ -94,7 +94,7 @@ respond = (res, code, body, headers)->
 # When a request comes in, figure out what to respond with, and then do that!
 handleRequest = (root)-> (req, res)->
   [url, query] = req.url.split "?"
-  filePath = root + url
+  filePath = decodeURI root + url
   ext = path.extname(filePath).toLowerCase()[1..]
 
   # When the request doesn't include a file extension, attempt to serve an index.html
