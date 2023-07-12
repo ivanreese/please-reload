@@ -1,6 +1,6 @@
 {
   "name": "please-reload",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "An unlucky little file server that's trying its best.",
   "author": "Ivan Reese (https://ivanish.ca)",
   "main": "please-reload.coffee",
@@ -8,5 +8,8 @@
     "type": "git",
     "url": "git+https://github.com/ivanreese/please-reload.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.13.0"
+  }
 }
