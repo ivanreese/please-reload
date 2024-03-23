@@ -8,7 +8,7 @@ ws = require "ws"
 networkHost = os.networkInterfaces().en0?.filter((i)-> i.family is "IPv4")[0]?.address
 reloadCount = 0
 started = false
-websockets = []
+websocket = null
 
 mimeTypes =
   css:   "text/css"
@@ -185,17 +185,17 @@ createServer = (root, host, port, name)-> new Promise (resolve)->
 
   # When the browser connects, upgrade it to a websocket conn, and store the websocket for firing reloads
   wss = new ws.Server noServer: true
-  server.on "upgrade", (r,s,h)-> wss.handleUpgrade r,s,h, (ws)-> websockets.push ws
+  server.on "upgrade", (r,s,h)-> wss.handleUpgrade r,s,h, (ws)->
+    # Terminate and replace the old websocket connection (if any) with this new one
+    websocket?.terminate()
+    websocket = ws
 
   server.listen { host, port: port }
 
-
 # Reload any connected browsers
 exports.reload = ()->
-  for websocket in websockets
-    websocket.send "reload"
-    log green "Reload ##{++reloadCount}"
-
+  websocket.send "reload"
+  log green "Reload ##{++reloadCount}"
 
 # Given a root file path, serve those files at two addresses: localhost, and the current IP address
 exports.serve = (root)->
