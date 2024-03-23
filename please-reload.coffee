@@ -27,6 +27,7 @@ mimeTypes =
   png:   "image/png"
   svg:   "image/svg+xml"
   wasm:  "application/wasm"
+  wgsl:  "text/plain"
   woff:  "application/font-woff"
   woff2: "font/woff2"
 
