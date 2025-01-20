@@ -15,7 +15,7 @@ PleaseReload = require "please-reload"
 PleaseReload.serve "."
 
 # By default, PleaseReload opens your browser to `http://localhost:3000` (or 3001, 3002, whatever's free)
-# Don't it to open your browser for you?
+# Don't want it to open your browser for you?
 PleaseReload.serve ".", false
 # Want it to open your browser to a specific path?
 PleaseReload.serve ".", "/specific/path"
