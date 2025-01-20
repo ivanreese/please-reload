@@ -207,7 +207,9 @@ exports.reload = ()->
   log green "Reload ##{++reloadCount}"
 
 # Given a root file path, serve those files at two addresses: localhost, and the current IP address
-exports.serve = (root)->
+# Optionally open a browser with this server. By default, opens the root. Set the second arg to false
+# to not open a browser, or pass a string to open a specific path from the root
+exports.serve = (root, open = true)->
   return if started
   started = true
 
@@ -218,7 +220,10 @@ exports.serve = (root)->
   localPort = await createServer root, "localhost", 3000, "local"
 
   # Open localhost automatically
-  child_process.execSync "open http://localhost:#{localPort}"
+  if open
+    cmd = "open http://localhost:#{localPort}"
+    if typeof open is "string" then cmd += "/" + open.replace /^\//, "" # strip leading slash
+    child_process.execSync cmd
 
   # Start a server for network access
   if networkHost
