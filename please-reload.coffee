@@ -203,8 +203,11 @@ createServer = (root, host, port, name)-> new Promise (resolve)->
 
 # Reload any connected browsers
 exports.reload = ()->
-  websocket.send "reload"
-  log green "Reload ##{++reloadCount}"
+  if websocket
+    websocket.send "reload"
+    log green "Reload ##{++reloadCount}"
+  else
+    log red "Couldn't reload, sorry — there's no websocket"
 
 # Given a root file path, serve those files at two addresses: localhost, and the current IP address
 # Optionally open a browser with this server. By default, opens the root. Set the second arg to false
