@@ -24,6 +24,7 @@ mimeTypes =
   json:   "application/json"
   map:    "application/json"
   mjs:    "text/javascript"
+  mov:    "video/quicktime"
   mp3:    "audio/mpeg"
   mp4:    "video/mp4"
   pdf:    "application/pdf"
