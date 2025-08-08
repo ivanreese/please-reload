@@ -1,6 +1,6 @@
 {
   "name": "please-reload",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "A plucky little live server that's trying its best.",
   "author": "Ivan Reese (https://ivanish.ca)",
   "main": "please-reload.coffee",
