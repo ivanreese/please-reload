@@ -13,6 +13,7 @@ websocket = null
 mimeTypes =
   coffee: "text/coffeescript"
   css:    "text/css"
+  csv:    "text/csv"
   gif:    "image/gif"
   glsl:   "text/plain"
   gz:     "application/gzip"
